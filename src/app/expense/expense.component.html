@@ -1,0 +1,31 @@
+<form #expense="ngForm" (ngSubmit)="onSubmit(expense.value)" class="userForm" role="form" aria-labelledby="expenseFormTitle">
+  <h2 id="expenseFormTitle">Expense Form</h2>
+  <div>
+    <label for="category">Category:</label>
+    <br>
+    <select id="category" name="category" ngModel required aria-required="true" aria-describedby="categoryDesc">
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="expense">Expense:</label>
+    <br>
+    <input type="number" id="expense" name="expense" min="0" ngModel required aria-required="true" aria-describedby="expenseDesc">
+  </div>
+  <div>
+    <label for="month">Month:</label>
+    <br>
+    <select id="month" name="month" ngModel required aria-required="true" aria-describedby="monthDesc">
+      <option *ngFor="let month of monthNames" [value]="month">{{ month }}</option>
+    </select>
+  </div>
+  <br>
+  <button type="submit" [disabled]="!expense.valid">Submit</button>
+  <br>
+</form>
+<div *ngIf="showSuccess" class="successMessage" aria-live="assertive" aria-atomic="true">
+  {{successMessage}}
+</div>
+<div *ngIf="showError" class="errorMessage" aria-live="assertive" aria-atomic="true">
+  {{errorMessage}}
+</div>

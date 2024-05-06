@@ -1,0 +1,23 @@
+<nav class="menu" aria-label="Main Menu">
+  <ul>
+    <li><a [routerLink]="['/']">Home</a></li>
+    <li *ngIf="userService.isLoggedIn()">
+      <ul>
+        <li><a [routerLink]="['/dashboard']">Dashboard</a></li>
+        <li><a [routerLink]="['/budget']">Add Budget</a></li>
+        <li><a [routerLink]="['/expense']">Add Expense</a></li>
+      </ul>
+    </li>
+    <li *ngIf="!userService.isLoggedIn()">
+      <ul>
+        <li><a [routerLink]="['/login']">Login</a></li>
+        <li><a [routerLink]="['/signup']">Signup</a></li>
+      </ul>
+    </li>
+    <li><a [routerLink]="['/about']">About</a></li>
+    <li><a [routerLink]="['/contact']">Contact</a></li>
+    <li *ngIf="userService.isLoggedIn()">
+      <a (click)="logout()" class="logoutButton">Logout</a>
+    </li>
+  </ul>
+</nav>

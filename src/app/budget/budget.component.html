@@ -1,0 +1,27 @@
+<form #budget="ngForm" (ngSubmit)="onSubmit(budget.value)" class="userForm" role="form" aria-labelledby="budgetFormTitle">
+  <h2 id="budgetFormTitle">Budget Form</h2>
+  <div>
+    <label for="category">New Category:</label>
+    <br>
+    <input type="text" id="category" name="category" ngModel required aria-required="true" aria-describedby="categoryDesc">
+  </div>
+  <div>
+    <label for="budget">Budget:</label>
+    <br>
+    <input type="number" id="budget" name="budget" min="0" ngModel required aria-required="true" aria-describedby="budgetDesc">
+  </div>
+  <div>
+    <label for="color">Color:</label>
+    <br>
+    <input type="text" id="color" name="color" ngModel required aria-required="true" aria-describedby="colorDesc">
+  </div>
+  <br>
+  <button type="submit" [disabled]="!budget.valid">Submit</button>
+  <br>
+</form>
+<div *ngIf="showSuccess" class="successMessage" aria-live="assertive" aria-atomic="true">
+  {{successMessage}}
+</div>
+<div *ngIf="showError" class="errorMessage" aria-live="assertive" aria-atomic="true">
+  {{errorMessage}}
+</div>

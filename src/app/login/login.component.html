@@ -1,0 +1,19 @@
+<form class="userForm" #userData="ngForm" (ngSubmit)="onSubmit(userData.value)" role="form" aria-labelledby="userFormTitle">
+  <h2 id="userFormTitle">User Login Form</h2>
+  <div>
+    <label for="username">User Name:</label>
+    <br>
+    <input type="text" id="username" name="username" ngModel required aria-required="true" aria-describedby="usernameDesc">
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <br>
+    <input type="password" id="password" name="password" ngModel required aria-required="true" aria-describedby="passwordDesc">
+  </div>
+  <br>
+  <button type="submit" [disabled]="!userData.valid">Submit</button>
+  <br>
+</form>
+<div *ngIf="showError" class="errorMessage" aria-live="assertive" aria-atomic="true">
+  {{errorMessage}}
+</div>
